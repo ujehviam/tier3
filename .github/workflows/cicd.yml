@@ -1,0 +1,8 @@
+name: Tier3 workflow
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
