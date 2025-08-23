@@ -56,10 +56,10 @@ jobs:
             pip install flask
         - name: run applications
           run: |
-            python3 app.py &&
-            python3 services.py &&
-            python3 models.py
-            
+            python3 app.py &
+            python3 services.py &
+            python3 models.py &
+
 
         
 
