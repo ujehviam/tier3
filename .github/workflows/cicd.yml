@@ -6,3 +6,28 @@ on:
   pull_request:
     types:
       - opened
+jobs: 
+    get_code:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout_code
+          uses: actions/checkout@v4
+        - name: setup environment
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.13' 
+        - name: setup virtual environment
+          run: |
+            python3 -m venv venvtier3
+            source venvtier3/bin/activate
+        - name: install dependencies
+          run: |
+            python3 -m install --upgrade pip
+            pip install flask
+        - name: cache depnedencies
+          uses: actions/cache@v4
+          with:
+            key: ${{ app.py }}
+        
+
+
