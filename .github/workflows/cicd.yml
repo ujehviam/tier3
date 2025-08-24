@@ -83,10 +83,13 @@ jobs:
           run: |
             python3 -m pip install --upgrade pip
             pip install flask
-        - name: test code
-          id: Test_code
+        - name: first test
+          id: Test_1
           run: |
             python3 test_tier3_1.py > test_result.txt 2>&1 || true
+        - name: second test
+          id: test_2
+          run:
             python3 test_tier3_2.py >> test_result.txt 2>&1 || true
         - name: get artifacts
           uses: actions/upload-artifact@v4
