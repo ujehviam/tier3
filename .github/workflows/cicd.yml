@@ -60,6 +60,44 @@ jobs:
             python3 services.py &
             python3 models.py &
 
+    Test:
+      needs: Build
+      runs-on: ubuntu-latest
+      steps:
+        - name: checout code
+          uses: actions/checkout@v4
+        - name: setup environment
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.13' 
+        - name: setup virtual environment
+          run: |
+            python3 -m venv venvtier3
+            source venvtier3/bin/activate
+        - name: cache depnedencies
+          uses: actions/cache@v4
+          with:
+            path: ~/.cache/pip
+            key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        - name: install dependencies
+          run: |
+            python3 -m pip install --upgrade pip
+            pip install flask
+        - name: test code
+          id: Test_code
+          run: |
+            python3 test_tier3_1.py > test_result.txt 2>&1
+            python3 test_tier3_2.py >> test_result.txt 2>&1
+        - name: get artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: message from the test result
+            path: test_result.txt
+
+
+          
+            
+
 
         
 
