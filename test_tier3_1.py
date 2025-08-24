@@ -32,7 +32,7 @@ class TestServices(unittest.TestCase):
 
     def test_authenticate_user(self):
         """Test login functionality"""
-        services.register_user("bob", "mypassword")
+        service.register_user("bob", "mypassword")
 
         # Correct credentials
         self.assertTrue(services.authenticate_user("bob", "mypassword"))

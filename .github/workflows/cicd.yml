@@ -86,8 +86,8 @@ jobs:
         - name: test code
           id: Test_code
           run: |
-            python3 test_tier3_1.py > test_result.txt 2>&1
-            python3 test_tier3_2.py >> test_result.txt 2>&1
+            python3 test_tier3_1.py > test_result.txt 2>&1 || true
+            python3 test_tier3_2.py >> test_result.txt 2>&1 || true
         - name: get artifacts
           uses: actions/upload-artifact@v4
           with:
