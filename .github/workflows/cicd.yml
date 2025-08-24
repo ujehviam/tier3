@@ -96,6 +96,11 @@ jobs:
           with:
             name: message from the test result
             path: test_result.txt
+        - name: check for failure
+          if: Test.Test_1.outcome == 'failure'
+          run: echo "test 1 failed"
+          if: Test.Test_1.outcome == 'failure'
+          run: echo "test 2 failed"
 
 
           
