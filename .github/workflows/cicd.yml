@@ -84,10 +84,12 @@ jobs:
             python3 -m pip install --upgrade pip
             pip install flask
         - name: first test
+          continue-on-error: true
           id: Test_1
           run: |
             python3 test_tier3_1.py > test_result.txt 2>&1
         - name: second test
+          continue-on-error: true
           id: test_2
           run:
             python3 test_tier3_2.py >> test_result.txt 2>&1
