@@ -45,7 +45,7 @@ class TestFlaskApp(unittest.TestCase):
         # Correct login
         response = self.app.post("/login", data=dict(
             username="bob",
-            passwor="mypassword"
+            password="mypassword"
         ), follow_redirects=True)
         self.assertIn(b"Welcome, bob", response.data)
 
