@@ -86,11 +86,11 @@ jobs:
         - name: first test
           id: Test_1
           run: |
-            python3 test_tier3_1.py > test_result.txt 2>&1 || true
+            python3 test_tier3_1.py > test_result.txt 2>&1
         - name: second test
           id: test_2
           run:
-            python3 test_tier3_2.py >> test_result.txt 2>&1 || true
+            python3 test_tier3_2.py >> test_result.txt 2>&1
         - name: get artifacts
           uses: actions/upload-artifact@v4
           with:
