@@ -90,7 +90,7 @@ jobs:
             python3 test_tier3_1.py > test_result.txt 2>&1
         - name: second test
           continue-on-error: true
-          id: test_2
+          id: Test_2
           run:
             python3 test_tier3_2.py >> test_result.txt 2>&1
         - name: get artifacts
@@ -98,6 +98,12 @@ jobs:
           with:
             name: message from the test result
             path: test_result.txt
+        - name: get failures test_1
+          if: steps.Test_1.outcome == 'failure'
+          run: echo "❌ test_tier3_1.py failed"
+        - name: get failure test_2
+          if: steps.Test_2.outcome == 'failure'
+          run: echo "❌ test_tier3_2.py failed"
         
 
 
