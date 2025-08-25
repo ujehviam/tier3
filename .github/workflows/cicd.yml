@@ -94,6 +94,7 @@ jobs:
           run:
             python3 test_tier3_2.py >> test_result.txt 2>&1
         - name: get artifacts
+          if: failure()
           uses: actions/upload-artifact@v4
           with:
             name: message from the test result
