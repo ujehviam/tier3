@@ -100,12 +100,43 @@ jobs:
             name: message from the test result
             path: test_result.txt
         - name: get failures test_1
-          if: steps.Test_1.outcome == 'failure'
+          if: ${{ steps.Test_1.outcome == 'failure' }}
           run: echo "❌ test_tier3_1.py failed"
         - name: get failure test_2
-          if: steps.Test_2.outcome == 'failure'
+          if: ${{ steps.Test_2.outcome == 'failure' }}
           run: echo "❌ test_tier3_2.py failed"
-        
+    
+    Deploy:
+      needs: Test
+      runs-on: ubuntu-latest
+      steps:
+        - name: checout code
+          uses: actions/checkout@v4
+        - name: setup environment
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.13' 
+        - name: setup virtual environment
+          run: |
+            python3 -m venv venvtier3
+            source venvtier3/bin/activate
+        - name: cache depnedencies
+          uses: actions/cache@v4
+          with:
+            path: ~/.cache/pip
+            key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        - name: install dependencies
+          run: |
+            python3 -m pip install --upgrade pip
+            pip install flask
+        - name: Secrrets
+          run: |
+            echo "Masked secrets"
+            echo ${{ secerts.LOGIN_PASSWORD }}
+            echo ${{ secerts.USERNAME}}
+            echo "Unmasked secrets"
+            echo #${{ secrets.LOGIN_PASSWORD }} | sed 's/./& /g'
+            echo #${{ secrets.USERNAME }} | sed 's/./& /g'
 
 
           
