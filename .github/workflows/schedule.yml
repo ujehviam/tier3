@@ -1,6 +1,6 @@
 name: Schedule_workflow
 on:
-    shcedule:
+    schedule:
         - cron: "15 1 * * *"
 jobs:
     Test:
