@@ -1,0 +1,10 @@
+name: Schedule_workflow
+on:
+    shcedule:
+        - cron: "15 1 * * *"
+jobs:
+    Test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: test
+              run: echo "the schedule test ran"

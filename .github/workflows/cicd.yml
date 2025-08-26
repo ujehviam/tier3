@@ -134,9 +134,7 @@ jobs:
             echo "Masked secrets"
             echo ${{ secrets.LOGIN_PASSWORD }}
             echo ${{ secrets.USERNAME}}
-            echo "Unmasked secrets"
-            echo #${{ secrets.LOGIN_PASSWORD }} | sed 's/./& /g'
-            echo #${{ secrets.USERNAME }} | sed 's/./& /g'
+           
 
 
           
