@@ -33,6 +33,7 @@ jobs:
 
     Build:
       needs: get_code
+      if: success()
       runs-on: ubuntu-latest
       steps:
         - name: checout code
