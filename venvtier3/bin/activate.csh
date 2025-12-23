@@ -9,17 +9,17 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV /home/Mayaki/Desktop/Projects/tier3/venvtier3
+setenv VIRTUAL_ENV /home/mayaki/Desktop/Projects/tier3/venvtier3
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
+setenv VIRTUAL_ENV_PROMPT venvtier3
 
 
 set _OLD_VIRTUAL_PROMPT="$prompt"
 
 if (! "$?VIRTUAL_ENV_DISABLE_PROMPT") then
-    set prompt = '(venvtier3) '"$prompt"
-    setenv VIRTUAL_ENV_PROMPT '(venvtier3) '
+    set prompt = "("venvtier3") $prompt:q"
 endif
 
 alias pydoc python -m pydoc
